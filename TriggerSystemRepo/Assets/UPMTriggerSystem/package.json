@@ -1,6 +1,6 @@
 {
     "name": "com.sugoisenshufactory.package",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "displayName": "Trigger system",
     "description": "Basic trigger system that fixes some of most common problems with triggers in unity",
     "unity": "2020.3",

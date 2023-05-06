@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8903344a-9d58-430f-a399-6751cc6e0749" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Samples/Scenes/BaseDemoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Samples/Scenes/BaseDemoScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/ReliableTrigger/IReliableTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/ReliableTrigger/IReliableTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAction/BaseTriggerAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAction/BaseTriggerAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAction/SetActiveTriggerAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAction/SetActiveTriggerAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerActionBroadcaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerActionBroadcaster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAnalyzer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TriggerSystem/Scripts/TriggerAnalyzer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPMTriggerSystem/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPMTriggerSystem/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPMTriggerSystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPMTriggerSystem/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,25 +19,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Maciej Zareba\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Maciej Zareba\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Maciej Zareba\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Maciej Zareba\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Maciej Zareba\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Maciej Zareba\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.2.2f1\Editor\Unity.exe" />
@@ -89,7 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1683232378058</updated>
       <workItem from="1683232382586" duration="75000" />
-      <workItem from="1683369963251" duration="1783000" />
+      <workItem from="1683369963251" duration="2365000" />
+      <workItem from="1683372397777" duration="14000" />
     </task>
     <servers />
   </component>

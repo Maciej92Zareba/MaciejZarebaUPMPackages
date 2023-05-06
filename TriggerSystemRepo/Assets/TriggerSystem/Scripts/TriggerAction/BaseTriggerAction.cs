@@ -4,54 +4,53 @@ namespace SugoiSenshuFactory.TriggerSystem
 {
 	public abstract class BaseTriggerAction : MonoBehaviour
 	{
-		[field: SerializeField]
-		private bool ActiveTriggerOnlyOnce { get; set; } = true;
-		[field: SerializeField]
-		private bool StopActionOnTriggerExit { get; set; }
+		[SerializeField]
+		private bool activeTriggerOnlyOnce = true;
 
-		private bool CurrentTriggerState { get; set; }
-		private bool WasTriggered { get; set; }
+		[SerializeField] 
+		private bool stopActionOnTriggerExit = true;
 
-		private bool CanExecuteExitAction { get; set; }
+		private bool currentTriggerState;
+		private bool wasTriggered;
+		private bool canExecuteExitAction;
 
-		public void StartTriggerEnterAction (Collider enteringCollider)
+		public void StartTriggerEnterAction (Collider enteringTriggerCollider)
 		{
 			if (CanExecuteTriggerEnterAction() == true)
 			{
-				TriggerEnterAction(enteringCollider);
+				TriggerEnterAction(enteringTriggerCollider);
 			}
 		}
 
-		public void StartTriggerExitAction (Collider exitingCollider)
+		public void StartTriggerExitAction (Collider exitingTriggerCollider)
 		{
 			if (CanExecuteTriggerExitAction() == true)
 			{
-				TriggerExitAction(exitingCollider);
+				currentTriggerState = false;
+				TriggerExitAction(exitingTriggerCollider);
 			}
 		}
 
-		protected abstract void TriggerEnterAction (Collider enteringCollider);
-		protected abstract void TriggerExitAction (Collider exitingCollider);
+		protected abstract void TriggerEnterAction (Collider enteringTriggerCollider);
+		protected abstract void TriggerExitAction (Collider exitingTriggerCollider);
 
 		private bool CanExecuteTriggerEnterAction ()
 		{
-			CurrentTriggerState = GetCurrentTriggerStateBasedOnWasTriggered();
-			WasTriggered = true;
+			currentTriggerState = GetCurrentTriggerStateBasedOnWasTriggered();
+			wasTriggered = true;
 
-			return CurrentTriggerState;
+			return currentTriggerState;
 		}
 
 		private bool GetCurrentTriggerStateBasedOnWasTriggered ()
 		{
-			return (ActiveTriggerOnlyOnce != true || WasTriggered != true);
+			return (activeTriggerOnlyOnce != true || wasTriggered != true);
 		}
 
 		private bool CanExecuteTriggerExitAction ()
 		{
-			CanExecuteExitAction = (StopActionOnTriggerExit == true && CurrentTriggerState == true);
-			CurrentTriggerState = false;
-
-			return CanExecuteExitAction;
+			canExecuteExitAction = (stopActionOnTriggerExit == true && currentTriggerState == true);
+			return canExecuteExitAction;
 		}
 	}
 }

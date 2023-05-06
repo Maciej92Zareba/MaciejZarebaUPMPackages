@@ -3,19 +3,21 @@ using UnityEngine;
 
 namespace SugoiSenshuFactory.TriggerSystem
 {
-	public class ReliableTrigger : MonoBehaviour, IReliableTrigger
-	{
-		public event Action OnReliableTriggerDisableOrDestroy = delegate { };
+    public class ReliableTrigger : MonoBehaviour, IReliableTrigger
+    {
+        public event Action<Collider> OnReliableTriggerDisableOrDestroy = delegate { };
 
-		private void OnDisable ()
-		{
-			OnReliableTriggerDisableOrDestroy.Invoke();
-		}
+        [field: SerializeField] 
+        public Collider BoundTriggerCollider { get; private set; }
 
-		private void OnDestroy ()
-		{
-			OnReliableTriggerDisableOrDestroy.Invoke();
-		}
-	}
+        private void OnDisable()
+        {
+            OnReliableTriggerDisableOrDestroy.Invoke(BoundTriggerCollider);
+        }
+
+        private void OnDestroy()
+        {
+            OnReliableTriggerDisableOrDestroy.Invoke(BoundTriggerCollider);
+        }
+    }
 }
-

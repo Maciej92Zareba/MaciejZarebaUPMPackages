@@ -4,107 +4,109 @@ using UnityEngine;
 
 namespace SugoiSenshuFactory.TriggerSystem
 {
-	public class TriggerActionBroadcaster : MonoBehaviour
-	{
-		[field: SerializeField]
-		protected List<BaseTriggerAction> TriggerActionsCollection { get; set; } = new ();
-		[field: SerializeField]
-		protected List<TriggerAnalyzer> TriggerAnalyzersCollection { get; set; } = new ();
+    public class TriggerActionBroadcaster : MonoBehaviour
+    {
+        [SerializeField] 
+        private List<BaseTriggerAction> triggerActionsCollection = new();
+        [SerializeField] 
+        private List<TriggerAnalyzer> triggerAnalyzersCollection = new();
 
-		private Action cachedAnalyzeTriggersActivationState;
-		private bool lastState = false;
+        private Action<Collider> cachedAnalyzeTriggersActivationState;
+        private bool lastState = false;
 
-		[ContextMenu(nameof(CollectTriggerActions))]
-		public void CollectTriggerActions ()
-		{
-			GetComponentsInChildren(TriggerActionsCollection);
-		}
+        protected virtual void Awake()
+        {
+            cachedAnalyzeTriggersActivationState = AnalyzeTriggersActivationState;
+        }
 
-		[ContextMenu(nameof(CollectTriggerAnalyzers))]
-		public void CollectTriggerAnalyzers ()
-		{
-			GetComponentsInChildren(TriggerAnalyzersCollection);
-		}
+        protected virtual void OnEnable()
+        {
+            AttachToEvents();
+        }
 
-		protected virtual void Awake()
-		{
-			cachedAnalyzeTriggersActivationState = AnalyzeTriggersActivationState;
-		}
-		
-		protected virtual void OnEnable ()
-		{
-			AttachToEvents();
-		}
+        protected virtual void OnDisable()
+        {
+            DetachFromEvents();
+        }
 
-		protected virtual void OnDisable ()
-		{
-			DetachFromEvents();
-		}
-		
-		protected virtual bool GetCurrentState ()
-		{
-			bool currentState = false;
+        protected virtual bool GetCurrentState()
+        {
+            bool currentState = false;
 
-			for (int i = 0; i < TriggerAnalyzersCollection.Count; i++)
-			{
-				if (TriggerAnalyzersCollection[i].IsBusy == true)
-				{
-					currentState = true;
-				}
-			}
+            for (int i = 0; i < triggerAnalyzersCollection.Count; i++)
+            {
+                if (triggerAnalyzersCollection[i].IsBusy == true)
+                {
+                    currentState = true;
+                }
+            }
 
-			return currentState;
-		}
+            return currentState;
+        }
 
-		protected virtual void AttachToEvents ()
-		{
-			for (int i = 0; i < TriggerAnalyzersCollection.Count; i++)
-			{
-				TriggerAnalyzersCollection[i].OnTriggerStateChange += cachedAnalyzeTriggersActivationState;
-			}
-		}
+        protected virtual void AttachToEvents()
+        {
+            for (int i = 0; i < triggerAnalyzersCollection.Count; i++)
+            {
+                triggerAnalyzersCollection[i].OnTriggerStateChange += cachedAnalyzeTriggersActivationState;
+            }
+        }
 
-		protected virtual void DetachFromEvents ()
-		{
-			for (int i = 0; i < TriggerAnalyzersCollection.Count; i++)
-			{
-				TriggerAnalyzersCollection[i].OnTriggerStateChange -= cachedAnalyzeTriggersActivationState;
-			}
-		}
-		
-		protected void AnalyzeTriggersActivationState ()
-		{
-			bool currentState = GetCurrentState();
+        protected virtual void DetachFromEvents()
+        {
+            for (int i = 0; i < triggerAnalyzersCollection.Count; i++)
+            {
+                triggerAnalyzersCollection[i].OnTriggerStateChange -= cachedAnalyzeTriggersActivationState;
+            }
+        }
 
-			if (currentState != lastState)
-			{
-				if (currentState == true)
-				{
-					BroadcastTriggerEnter();
-				}
-				else
-				{
-					BroadcastTriggerExit();
-				}
+        private void AnalyzeTriggersActivationState(Collider stateChangingCollider)
+        {
+            bool currentState = GetCurrentState();
 
-				lastState = currentState;
-			}
-		}
+            if (currentState != lastState)
+            {
+                if (currentState == true)
+                {
+                    BroadcastTriggerEnter(stateChangingCollider);
+                }
+                else
+                {
+                    BroadcastTriggerExit(stateChangingCollider);
+                }
 
-		private void BroadcastTriggerEnter ()
-		{
-			for (int i = 0; i < TriggerActionsCollection.Count; i++)
-			{
-				TriggerActionsCollection[i].StartTriggerEnterAction(null);
-			}
-		}
+                lastState = currentState;
+            }
+        }
 
-		private void BroadcastTriggerExit ()
-		{
-			for (int i = 0; i < TriggerActionsCollection.Count; i++)
-			{
-				TriggerActionsCollection[i].StartTriggerExitAction(null);
-			}
-		}
-	}
+        private void BroadcastTriggerEnter(Collider enteringTriggerCollider)
+        {
+            for (int i = 0; i < triggerActionsCollection.Count; i++)
+            {
+                triggerActionsCollection[i].StartTriggerEnterAction(enteringTriggerCollider);
+            }
+        }
+
+        private void BroadcastTriggerExit(Collider exitingTriggerCollider)
+        {
+            for (int i = 0; i < triggerActionsCollection.Count; i++)
+            {
+                triggerActionsCollection[i].StartTriggerExitAction(exitingTriggerCollider);
+            }
+        }
+        
+        #if UNITY_EDITOR
+        [ContextMenu(nameof(CollectTriggerActions))]
+        private void CollectTriggerActions()
+        {
+            GetComponentsInChildren(triggerActionsCollection);
+        }
+
+        [ContextMenu(nameof(CollectTriggerAnalyzers))]
+        private void CollectTriggerAnalyzers()
+        {
+            GetComponentsInChildren(triggerAnalyzersCollection);
+        }
+        #endif
+    }
 }

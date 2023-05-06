@@ -5,41 +5,41 @@ namespace SugoiSenshuFactory.TriggerSystem
 {
     public class TriggerAnalyzer : MonoBehaviour
     {
-		public event Action OnTriggerStateChange = delegate { };
+		public event Action<Collider> OnTriggerStateChange = delegate { };
 
 		public bool IsBusy { get; private set; }
 
 		private IReliableTrigger cachedIReliableTrigger;
-		private Action cachedForceTriggerExit;
+		private Action<Collider> cachedForceTriggerExit;
 
 		protected virtual void Awake()
 		{
 			cachedForceTriggerExit = ForceTriggerExit;
 		}
 		
-		protected virtual void OnTriggerEnter (Collider other)
+		protected virtual void OnTriggerEnter (Collider enteringTriggerCollider)
 		{
-			if (IsEnteringReliableTrigger(other) == true)
+			if (IsEnteringReliableTrigger(enteringTriggerCollider) == true)
 			{
 				cachedIReliableTrigger.OnReliableTriggerDisableOrDestroy += cachedForceTriggerExit;
 				IsBusy = true;
-				OnTriggerStateChange.Invoke();
+				OnTriggerStateChange.Invoke(enteringTriggerCollider);
 			}			
 		}
 
-		protected virtual void OnTriggerExit (Collider other)
+		protected virtual void OnTriggerExit (Collider exitingTriggerCollider)
 		{
-			if (IsEnteringReliableTrigger(other) == true)
+			if (IsEnteringReliableTrigger(exitingTriggerCollider) == true)
 			{
-				ForceTriggerExit();
+				ForceTriggerExit(exitingTriggerCollider);
 			}
 		}
 
-		private void ForceTriggerExit ()
+		private void ForceTriggerExit (Collider exitingTriggerCollider)
 		{
 			cachedIReliableTrigger.OnReliableTriggerDisableOrDestroy -= cachedForceTriggerExit;
 			IsBusy = false;
-			OnTriggerStateChange.Invoke();
+			OnTriggerStateChange.Invoke(exitingTriggerCollider);
 		}
 
 		private bool IsEnteringReliableTrigger (Collider other)

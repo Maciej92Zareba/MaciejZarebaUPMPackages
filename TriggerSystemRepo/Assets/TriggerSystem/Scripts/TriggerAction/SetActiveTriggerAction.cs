@@ -5,26 +5,26 @@ namespace SugoiSenshuFactory.TriggerSystem
 {
 	public class SetActiveTriggerAction : BaseTriggerAction
 	{
-		[field: SerializeField]
-		protected List<GameObject> ObjectsToSetActiveCollection { get; set; } = new ();
-		[field: SerializeField]
-		protected bool SetActiveStateOnEnter { get; set; } = false;
+		[SerializeField]
+		private List<GameObject> objectsToSetActiveCollection = new ();
+		[SerializeField]
+		private bool setActiveStateOnEnter = false;
 
-		protected override void TriggerEnterAction (Collider enteringCollider)
+		protected override void TriggerEnterAction (Collider enteringTriggerCollider)
 		{
-			SetActiveState(SetActiveStateOnEnter);
+			SetActiveState(setActiveStateOnEnter);
 		}
 
-		protected override void TriggerExitAction (Collider exitingCollider)
+		protected override void TriggerExitAction (Collider exitingTriggerCollider)
 		{
-			SetActiveState(SetActiveStateOnEnter == false);
+			SetActiveState(setActiveStateOnEnter == false);
 		}
 
-		protected virtual void SetActiveState (bool state)
+		private void SetActiveState (bool state)
 		{
-			for (int i = 0; i < ObjectsToSetActiveCollection.Count; i++)
+			for (int i = 0; i < objectsToSetActiveCollection.Count; i++)
 			{
-				ObjectsToSetActiveCollection[i].SetActive(state);
+				objectsToSetActiveCollection[i].SetActive(state);
 			}
 		}
 	}

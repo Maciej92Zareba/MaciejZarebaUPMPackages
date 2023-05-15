@@ -1,5 +1,5 @@
 {
-  "name": "com.sugoisenshufactory.TriggerSystem",
+  "name": "com.sugoisenshufactory.trigger-system",
   "version": "1.0.0",
   "displayName": "Trigger system",
   "description": "Basic trigger system that fixes some of most common problems with triggers in unity",

@@ -1,15 +1,19 @@
 {
-    "name": "com.sugoisenshufactory.package",
-    "version": "1.0.0",
-    "displayName": "Trigger system",
-    "description": "Basic trigger system that fixes some of most common problems with triggers in unity",
-    "unity": "2020.3",
-    "documentationUrl": "https://example.com/",
-    "changelogUrl": "https://example.com/changelog.html",
-    "licensesUrl": "https://example.com/licensing.html",
-    "dependencies": {},
-    "keywords": [
-        "Trigger system"
-    ],
-    "author": "Maciej Zarêba"
+  "name": "com.sugoisenshufactory.TriggerSystem",
+  "version": "1.0.0",
+  "displayName": "Trigger system",
+  "description": "Basic trigger system that fixes some of most common problems with triggers in unity",
+  "unity": "2020.3",
+  "dependencies": {},
+  "keywords": [
+    "Trigger system"
+  ],
+  "author": "Maciej Zarêba",
+  "samples": [
+    {
+      "displayName": "Base sample",
+      "description": "Base scene to show functionality of trigger system",
+      "path": "Samples~/BaseSample"
+    }
+  ]
 }

@@ -5,6 +5,6 @@ public class ExampleManualUpdate : ManualUnityCallsMonoBehaviour
 {
     public override void ManualUpdate()
     {
-        Debug.Log($"ManualUpdate called with order {CallOrder} by gameobject with name {gameObject.name}", gameObject);
+        Debug.Log($"ManualUpdate called  by gameobject with name {gameObject.name}", gameObject);
     }
 }

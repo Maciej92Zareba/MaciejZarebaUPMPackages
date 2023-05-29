@@ -1,13 +1,9 @@
-using System.ComponentModel;
 using UnityEngine;
 
 namespace SugoiSenshuFactory.ManualUnityCalls
 {
     public class ManualUnityCallsMonoBehaviour : MonoBehaviour
     {
-        [field: SerializeField, ReadOnly(true)] 
-        public uint CallOrder { get; protected set; } = 0;
-
         public virtual void ManualAwake()
         {
         

@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace SugoiSenshuFactory.ManualUnityCalls
@@ -7,21 +7,36 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 	public class ManualUnityCallsManager : MonoBehaviour
 	{
 		[SerializeField]
-		private ManualUnityCallsMonoBehaviour[] awakeManualUnityCallsCollection;
+		private SegregatedManualUnityCallsMonoBehaviour[] awakeManualUnityCallsCollection;
 		[SerializeField]
-		private ManualUnityCallsMonoBehaviour[] startManualUnityCallsCollection;
+		private SegregatedManualUnityCallsMonoBehaviour[] startManualUnityCallsCollection;
 		[SerializeField]
-		private List<ManualUnityCallsMonoBehaviour> updateManualUnityCallsCollection = new();
+		private List<SegregatedManualUnityCallsMonoBehaviour> updateManualUnityCallsCollection = new();
 		[SerializeField]
-		private List<ManualUnityCallsMonoBehaviour> lateUpdateManualUnityCallsCollection = new();
+		private List<SegregatedManualUnityCallsMonoBehaviour> lateUpdateManualUnityCallsCollection = new();
 		[SerializeField]
-		private List<ManualUnityCallsMonoBehaviour> fixedUpdateManualUnityCallsCollection = new();
+		private List<SegregatedManualUnityCallsMonoBehaviour> fixedUpdateManualUnityCallsCollection = new();
+
+		public void RegisterManualUnityCallsMonoBehaviourForUpdate (ManualUnityCallsMonoBehaviour newManualUnityCallsMonoBehaviour, int callOrder)
+		{
+			AddAndSortSegregatedManualUnityCallsMonoBehaviour(updateManualUnityCallsCollection, newManualUnityCallsMonoBehaviour, callOrder);
+		}
+
+		public void RegisterManualUnityCallsMonoBehaviourForLateUpdate (ManualUnityCallsMonoBehaviour newManualUnityCallsMonoBehaviour, int callOrder)
+		{
+			AddAndSortSegregatedManualUnityCallsMonoBehaviour(lateUpdateManualUnityCallsCollection, newManualUnityCallsMonoBehaviour, callOrder);
+		}
+
+		public void RegisterManualUnityCallsMonoBehaviourForFixedUpdate (ManualUnityCallsMonoBehaviour newManualUnityCallsMonoBehaviour, int callOrder)
+		{
+			AddAndSortSegregatedManualUnityCallsMonoBehaviour(fixedUpdateManualUnityCallsCollection, newManualUnityCallsMonoBehaviour, callOrder);
+		}
 
 		protected virtual void Awake ()
 		{
 			for (int i = 0; i < awakeManualUnityCallsCollection.Length; i++)
 			{
-				awakeManualUnityCallsCollection[i].ManualAwake();
+				awakeManualUnityCallsCollection[i].BoundManualUnityCallsMonoBehaviour.ManualAwake();
 			}
 		}
 
@@ -29,7 +44,7 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 		{
 			for (int i = 0; i < startManualUnityCallsCollection.Length; i++)
 			{
-				startManualUnityCallsCollection[i].ManualStart();
+				startManualUnityCallsCollection[i].BoundManualUnityCallsMonoBehaviour.ManualStart();
 			}
 		}
 
@@ -37,7 +52,7 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 		{
 			for (int i = 0; i < updateManualUnityCallsCollection.Count; i++)
 			{
-				updateManualUnityCallsCollection[i].ManualUpdate();
+				updateManualUnityCallsCollection[i].BoundManualUnityCallsMonoBehaviour.ManualUpdate();
 			}
 		}
 
@@ -45,7 +60,7 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 		{
 			for (int i = 0; i < lateUpdateManualUnityCallsCollection.Count; i++)
 			{
-				lateUpdateManualUnityCallsCollection[i].ManualLateUpdate();
+				lateUpdateManualUnityCallsCollection[i].BoundManualUnityCallsMonoBehaviour.ManualLateUpdate();
 			}
 		}
 
@@ -53,19 +68,43 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 		{
 			for (int i = 0; i < fixedUpdateManualUnityCallsCollection.Count; i++)
 			{
-				fixedUpdateManualUnityCallsCollection[i].ManualFixedUpdate();
+				fixedUpdateManualUnityCallsCollection[i].BoundManualUnityCallsMonoBehaviour.ManualFixedUpdate();
 			}
+		}
+		
+		private void AddAndSortSegregatedManualUnityCallsMonoBehaviour (List<SegregatedManualUnityCallsMonoBehaviour> source, ManualUnityCallsMonoBehaviour newManualUnityCallsMonoBehaviour, int callOrder)
+		{
+			SegregatedManualUnityCallsMonoBehaviour newSegregatedManualUnityCallsMonoBehaviour = new (newManualUnityCallsMonoBehaviour, callOrder);
+			source.Add(newSegregatedManualUnityCallsMonoBehaviour);
+			source.Sort(SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+		}
+
+		[System.Serializable]
+		public class SegregatedManualUnityCallsMonoBehaviour
+		{
+			public SegregatedManualUnityCallsMonoBehaviour (ManualUnityCallsMonoBehaviour manualUnityCallsMonoBehaviour, int callOrder)
+			{
+				BoundManualUnityCallsMonoBehaviour = manualUnityCallsMonoBehaviour;
+				CallOrder = callOrder;
+			}
+
+			[field: SerializeField]
+			public ManualUnityCallsMonoBehaviour BoundManualUnityCallsMonoBehaviour { get; private set; }
+			[field: SerializeField]
+			public int CallOrder { get; private set; }
+			
+			public static readonly Comparer<SegregatedManualUnityCallsMonoBehaviour> CALL_ORDER_ASCENDING_COMPARER = Comparer<SegregatedManualUnityCallsMonoBehaviour>.Create((x, y) => x.CallOrder.CompareTo(y.CallOrder));
 		}
 
 	#if UNITY_EDITOR
 		[ContextMenu(nameof(SortManualUnityCallsCollections))]
 		private void SortManualUnityCallsCollections ()
 		{
-			awakeManualUnityCallsCollection = awakeManualUnityCallsCollection.OrderBy(o => o.CallOrder).ToArray();
-			startManualUnityCallsCollection = startManualUnityCallsCollection.OrderBy(o => o.CallOrder).ToArray();
-			updateManualUnityCallsCollection = updateManualUnityCallsCollection.OrderBy(o => o.CallOrder).ToList();
-			lateUpdateManualUnityCallsCollection = lateUpdateManualUnityCallsCollection.OrderBy(o => o.CallOrder).ToList();
-			fixedUpdateManualUnityCallsCollection = fixedUpdateManualUnityCallsCollection.OrderBy(o => o.CallOrder).ToList();
+			Array.Sort(awakeManualUnityCallsCollection, SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+			Array.Sort(startManualUnityCallsCollection, SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+			updateManualUnityCallsCollection.Sort(SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+			lateUpdateManualUnityCallsCollection.Sort(SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+			fixedUpdateManualUnityCallsCollection.Sort(SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
 		}
 
 		[ContextMenu(nameof(RemoveClassThatHasNoDeclaredOverride))]
@@ -78,7 +117,7 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 			TryToRemoveNotOverridenElements(fixedUpdateManualUnityCallsCollection, nameof(ManualUnityCallsMonoBehaviour.ManualFixedUpdate));
 		}
 
-		private void TryToRemoveNotOverridenElements<T> (List<T> source, string compareMethodName)
+		private void TryToRemoveNotOverridenElements (List<SegregatedManualUnityCallsMonoBehaviour> source, string compareMethodName)
 		{
 			for (int i = source.Count - 1; i >= 0; i--)
 			{
@@ -89,9 +128,9 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 			}
 		}
 
-		private void TryToRemoveNotOverridenElements<T> (ref T[] source, string compareMethodName)
+		private void TryToRemoveNotOverridenElements (ref SegregatedManualUnityCallsMonoBehaviour[] source, string compareMethodName)
 		{
-			List<T> elementsToRemove = new(source);
+			List<SegregatedManualUnityCallsMonoBehaviour> elementsToRemove = new(source);
 
 			for (int i = source.Length - 1; i >= 0; i--)
 			{
@@ -104,9 +143,9 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 			source = elementsToRemove.ToArray();
 		}
 
-		private bool IsMissingOverride<T> (T source, string compareMethodName)
+		private bool IsMissingOverride (SegregatedManualUnityCallsMonoBehaviour source, string compareMethodName)
 		{
-			return source.GetType().GetMethod(compareMethodName).DeclaringType == typeof(ManualUnityCallsMonoBehaviour);
+			return source.BoundManualUnityCallsMonoBehaviour.GetType().GetMethod(compareMethodName).DeclaringType == typeof(ManualUnityCallsMonoBehaviour);
 		}
 	#endif
 	}

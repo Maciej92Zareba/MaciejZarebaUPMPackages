@@ -1,0 +1,19 @@
+{
+  "name": "com.sugoisenshufactory.manual-unity-calls",
+  "version": "1.0.0",
+  "displayName": "ManualUnityCalls",
+  "description": "Package provides solution to random order of Unity calls",
+  "unity": "2020.3",
+  "dependencies": {},
+  "keywords": [
+    "Trigger system"
+  ],
+  "author": "Maciej Zaręba",
+  "samples": [
+    {
+      "displayName": "Base sample",
+      "description": "Base scene to show functionality of manual unity calls",
+      "path": "Samples~/BaseSample"
+    }
+  ]
+}

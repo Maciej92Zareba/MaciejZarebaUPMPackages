@@ -6,8 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="8903344a-9d58-430f-a399-6751cc6e0749" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleSceneForManualUnityCalls.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleSceneForManualUnityCalls.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ExampleRegisterElement.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ExampleRegisterElement.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +56,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -105,7 +124,8 @@
       <workItem from="1685304848699" duration="131000" />
       <workItem from="1685305429647" duration="2909000" />
       <workItem from="1685378057301" duration="2175000" />
-      <workItem from="1685793912252" duration="381000" />
+      <workItem from="1685793912252" duration="1188000" />
+      <workItem from="1685795758529" duration="241000" />
     </task>
     <servers />
   </component>

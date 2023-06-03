@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8903344a-9d58-430f-a399-6751cc6e0749" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleSceneForManualUnityCalls.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleSceneForManualUnityCalls.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ExampleRegisterElement.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ExampleRegisterElement.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="8903344a-9d58-430f-a399-6751cc6e0749" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,6 +104,7 @@
       <workItem from="1685378057301" duration="2175000" />
       <workItem from="1685793912252" duration="1188000" />
       <workItem from="1685795758529" duration="241000" />
+      <workItem from="1685796744034" duration="716000" />
     </task>
     <servers />
   </component>

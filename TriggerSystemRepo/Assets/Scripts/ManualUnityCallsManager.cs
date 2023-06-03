@@ -31,6 +31,21 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 		{
 			AddAndSortSegregatedManualUnityCallsMonoBehaviour(fixedUpdateManualUnityCallsCollection, newManualUnityCallsMonoBehaviour, callOrder);
 		}
+		
+		public void UnregisterManualUnityCallsMonoBehaviourForUpdate (ManualUnityCallsMonoBehaviour removingManualUnityCallsMonoBehaviour)
+		{
+			RemoveSegregatedManualUnityCallsMonoBehaviour(updateManualUnityCallsCollection, removingManualUnityCallsMonoBehaviour);
+		}
+
+		public void UnregisterManualUnityCallsMonoBehaviourForLateUpdate (ManualUnityCallsMonoBehaviour removingManualUnityCallsMonoBehaviour)
+		{
+			RemoveSegregatedManualUnityCallsMonoBehaviour(lateUpdateManualUnityCallsCollection, removingManualUnityCallsMonoBehaviour);
+		}
+
+		public void UnregisterManualUnityCallsMonoBehaviourForFixedUpdate (ManualUnityCallsMonoBehaviour removingManualUnityCallsMonoBehaviour)
+		{
+			RemoveSegregatedManualUnityCallsMonoBehaviour(fixedUpdateManualUnityCallsCollection, removingManualUnityCallsMonoBehaviour);
+		}
 
 		protected virtual void Awake ()
 		{
@@ -77,6 +92,25 @@ namespace SugoiSenshuFactory.ManualUnityCalls
 			SegregatedManualUnityCallsMonoBehaviour newSegregatedManualUnityCallsMonoBehaviour = new (newManualUnityCallsMonoBehaviour, callOrder);
 			source.Add(newSegregatedManualUnityCallsMonoBehaviour);
 			source.Sort(SegregatedManualUnityCallsMonoBehaviour.CALL_ORDER_ASCENDING_COMPARER);
+		}
+
+		private void RemoveSegregatedManualUnityCallsMonoBehaviour (List<SegregatedManualUnityCallsMonoBehaviour> source, ManualUnityCallsMonoBehaviour removingManualUnityCallsMonoBehaviour)
+		{
+			int indexToRemove = -1;
+			
+			for (int i = 0; i < source.Count; i++)
+			{
+				if (source[i].BoundManualUnityCallsMonoBehaviour == removingManualUnityCallsMonoBehaviour)
+				{
+					indexToRemove = i;
+					break;
+				}
+			}
+
+			if (indexToRemove >= 0)
+			{
+				source.Remove(source[indexToRemove]);
+			}
 		}
 
 		[System.Serializable]

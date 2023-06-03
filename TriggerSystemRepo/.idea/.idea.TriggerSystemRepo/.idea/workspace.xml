@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8903344a-9d58-430f-a399-6751cc6e0749" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TriggerSystemRepo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ManualUnityCalls/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleManualAwake.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleManualUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleRegisterElement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ManualUnityCallsMonoBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestSpawnedRegister.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestSpawnedRegister.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExampleSpawnedRegister.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +105,7 @@
       <workItem from="1685304848699" duration="131000" />
       <workItem from="1685305429647" duration="2909000" />
       <workItem from="1685378057301" duration="2175000" />
+      <workItem from="1685793912252" duration="381000" />
     </task>
     <servers />
   </component>
